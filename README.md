@@ -6,8 +6,6 @@
 # 安装diesel_cli工具，用于生成db及对应的表
 cargo install diesel_cli --no-default-features --features sqlite
 
-cd antiProbe
-
 # 使用diesel生成db及对应的表
 sh db_install.sh
 
