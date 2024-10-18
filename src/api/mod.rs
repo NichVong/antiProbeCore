@@ -1,2 +1,2 @@
-pub mod control_page;
-pub mod topo_page;
+pub mod control;
+pub mod topo;

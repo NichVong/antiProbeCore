@@ -26,3 +26,5 @@ diesel.toml
 .DS_Store
 
 .vscode/*
+
+*.sql

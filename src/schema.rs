@@ -1,13 +1,39 @@
 // @generated automatically by Diesel CLI.
 
 diesel::table! {
-    topo_info (id) {
+    connections (id) {
         id -> Nullable<Integer>,
-        monster_id -> Integer,
-        monster_name -> Text,
-        monster_type -> Integer,
-        monster_description -> Nullable<Text>,
-        monster_icon_url -> Nullable<Text>,
-        game_type -> Integer,
+        device1_id -> Text,
+        device2_id -> Text,
+        connection_type -> Nullable<Text>,
+        bandwidth -> Nullable<Text>,
+        status -> Nullable<Text>,
     }
 }
+
+diesel::table! {
+    devices (id) {
+        id -> Nullable<Integer>,
+        name -> Text,
+        device_type -> Text,
+        ip_address -> Nullable<Text>,
+        mac_address -> Nullable<Text>,
+        location -> Nullable<Text>,
+        description -> Nullable<Text>,
+    }
+}
+
+diesel::table! {
+    networks (id) {
+        id -> Nullable<Integer>,
+        name -> Nullable<Text>,
+        cidr -> Nullable<Text>,
+        description -> Nullable<Text>,
+    }
+}
+
+diesel::allow_tables_to_appear_in_same_query!(
+    connections,
+    devices,
+    networks,
+);
