@@ -11,6 +11,7 @@ pub struct Device {
     pub mac_address: Option<String>,  // MAC 地址
     pub location: Option<String>,     // 设备所在位置或区域
     pub description: Option<String>,  // 设备描述
+    pub exp: String,
 }
 
 #[derive(Debug, Insertable)]
@@ -22,6 +23,7 @@ pub struct NewDevice {
     pub mac_address: Option<String>,
     pub location: Option<String>,
     pub description: Option<String>,
+    pub exp: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -32,4 +34,5 @@ pub struct DeviceJson {
     pub mac_address: Option<String>,
     pub location: Option<String>,
     pub description: Option<String>,
+    pub exp: String,
 }

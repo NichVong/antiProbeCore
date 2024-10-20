@@ -8,6 +8,7 @@ diesel::table! {
         connection_type -> Nullable<Text>,
         bandwidth -> Nullable<Text>,
         status -> Nullable<Text>,
+        exp -> Text,
     }
 }
 
@@ -20,6 +21,7 @@ diesel::table! {
         mac_address -> Nullable<Text>,
         location -> Nullable<Text>,
         description -> Nullable<Text>,
+        exp -> Text,
     }
 }
 
@@ -29,6 +31,7 @@ diesel::table! {
         name -> Nullable<Text>,
         cidr -> Nullable<Text>,
         description -> Nullable<Text>,
+        exp -> Text,
     }
 }
 
