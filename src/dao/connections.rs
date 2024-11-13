@@ -43,7 +43,7 @@ pub async fn create_connection(
 #[allow(dead_code)]
 pub async fn get_connections_by_exp(
     conn: &mut SqliteConnection,
-    quary_exp: &String,
+    quary_exp: &str,
 ) -> Result<Vec<Connection>, Error> {
     connections::table
         .filter(connections::exp.eq(quary_exp))
@@ -53,9 +53,9 @@ pub async fn get_connections_by_exp(
 #[allow(dead_code)]
 pub async fn update_connection(
     conn: &mut SqliteConnection,
-    device1_id: &String,
-    device2_id: &String,
-    quary_exp: &String,
+    device1_id: &str,
+    device2_id: &str,
+    quary_exp: &str,
     updated_connection: &NewConnection,
 ) -> Result<Connection, Error> {
     diesel::update(
@@ -97,7 +97,7 @@ pub async fn update_connection(
 #[allow(dead_code)]
 pub async fn delete_connections_by_exp(
     conn: &mut SqliteConnection,
-    quary_exp: &String,
+    quary_exp: &str,
 ) -> Result<usize, Error> {
     diesel::delete(connections::table.filter(connections::exp.eq(quary_exp))).execute(conn)
 }
@@ -105,8 +105,8 @@ pub async fn delete_connections_by_exp(
 #[allow(dead_code)]
 pub async fn delete_connections_by_device_id(
     conn: &mut SqliteConnection,
-    exp: &String,
-    device_id: &String,
+    exp: &str,
+    device_id: &str,
 ) -> Result<usize, Error> {
     diesel::delete(
         connections::table.filter(connections::exp.eq(exp)).filter(
@@ -121,9 +121,9 @@ pub async fn delete_connections_by_device_id(
 #[allow(dead_code)]
 pub async fn delete_connections_by_device_ids(
     conn: &mut SqliteConnection,
-    exp: &String,
-    device1_id: &String,
-    device2_id: &String,
+    exp: &str,
+    device1_id: &str,
+    device2_id: &str,
 ) -> Result<usize, Error> {
     diesel::delete(
         connections::table.filter(connections::exp.eq(exp)).filter(

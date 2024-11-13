@@ -36,7 +36,7 @@ pub async fn create_device(
 #[allow(dead_code)]
 pub async fn get_device_by_exp(
     conn: &mut SqliteConnection,
-    exp: &String,
+    exp: &str,
 ) -> Result<Vec<Device>, Error> {
     devices::table.filter(devices::exp.eq(exp)).load(conn)
 }
@@ -44,8 +44,8 @@ pub async fn get_device_by_exp(
 #[allow(dead_code)]
 pub async fn update_device(
     conn: &mut SqliteConnection,
-    device_name: &String,
-    quary_exp: &String,
+    device_name: &str,
+    quary_exp: &str,
     updated_device: &NewDevice,
 ) -> Result<Device, Error> {
     diesel::update(
@@ -74,8 +74,8 @@ pub async fn update_device(
 #[allow(dead_code)]
 pub async fn delete_device(
     conn: &mut SqliteConnection,
-    device_name: &String,
-    quary_exp: &String,
+    device_name: &str,
+    quary_exp: &str,
 ) -> Result<usize, Error> {
     diesel::delete(
         devices::table

@@ -37,7 +37,7 @@ pub async fn get_topo_handler(
     ))
 }
 
-async fn get_topo(pool: web::Data<Pool>, exp: &String) -> Result<TopoInfo, Error> {
+async fn get_topo(pool: web::Data<Pool>, exp: &str) -> Result<TopoInfo, Error> {
     let db_connection = &mut pool.get().map_err(|e| handle_error(e, "message"))?;
 
     let connections = dao::connections::get_connections_by_exp(db_connection, &exp)
@@ -63,7 +63,7 @@ pub async fn get_all_devices_handler(
     payload: web::Data<Json<GetDataPayload>>,
 ) -> Result<HttpResponse, Error> {
     let db_connection = &mut pool.get().map_err(|e| handle_error(e, "message"))?;
-    let exp= &payload.exp;
+    let exp = &payload.exp;
     let devices = dao::devices::get_device_by_exp(db_connection, exp)
         .await
         .map_err(|e| handle_error(e, "message"))?;
@@ -76,7 +76,7 @@ pub async fn get_all_connections_handler(
     payload: web::Data<Json<GetDataPayload>>,
 ) -> Result<HttpResponse, Error> {
     let db_connection = &mut pool.get().map_err(|e| handle_error(e, "message"))?;
-    let exp= &payload.exp;
+    let exp = &payload.exp;
     let devices = dao::connections::get_connections_by_exp(db_connection, exp)
         .await
         .map_err(|e| handle_error(e, "message"))?;
@@ -106,8 +106,8 @@ pub async fn delete_device_handler(
 
 async fn delete_device_and_connections(
     pool: web::Data<Pool>,
-    exp: &String,
-    device_id: &String,
+    exp: &str,
+    device_id: &str,
 ) -> Result<usize, Error> {
     let db_connection = &mut pool
         .get()
@@ -150,9 +150,9 @@ pub async fn delete_connection_handler(
 
 async fn delete_connection(
     pool: web::Data<Pool>,
-    exp: &String,
-    device1_id: &String,
-    device2_id: &String,
+    exp: &str,
+    device1_id: &str,
+    device2_id: &str,
 ) -> Result<usize, Error> {
     let db_connection = &mut pool
         .get()

@@ -39,8 +39,8 @@ pub fn create_network(
 #[allow(dead_code)]
 pub fn update_network(
     conn: &mut SqliteConnection,
-    network_name: &String,
-    quary_exp: &String,
+    network_name: &str,
+    quary_exp: &str,
     updated_network: &NewNetwork,
 ) -> Result<Network, Error> {
     diesel::update(
@@ -65,8 +65,8 @@ pub fn update_network(
 #[allow(dead_code)]
 pub fn delete_network(
     conn: &mut SqliteConnection,
-    network_name: &String,
-    quary_exp: &String,
+    network_name: &str,
+    quary_exp: &str,
 ) -> Result<usize, Error> {
     diesel::delete(
         networks::table
